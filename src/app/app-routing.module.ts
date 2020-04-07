@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { JobComponent } from './job/job.component';
+
 const routes: Routes = [
     {
         path: '',
@@ -38,6 +40,10 @@ const routes: Routes = [
         path: 'version',
         loadChildren: () =>
             import('modules/utility/utility-routing.module').then(m => m.UtilityRoutingModule),
+    },
+    {
+        path: 'job',
+        component: JobComponent,
     },
     {
         path: '**',

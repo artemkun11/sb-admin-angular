@@ -11,6 +11,7 @@ import * as dashboardContainers from './containers';
 
 /* Guards */
 import * as dashboardGuards from './guards';
+import { Kobiton } from 'protractor/built/driverProviders';
 
 /* Routes */
 export const ROUTES: Routes = [

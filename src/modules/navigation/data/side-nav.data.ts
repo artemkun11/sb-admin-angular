@@ -1,21 +1,44 @@
 import { SideNavItems, SideNavSection } from '@modules/navigation/models';
 
 export const sideNavSections: SideNavSection[] = [
+    // {
+    //     text: 'core',
+    //     items: ['dashboard'],
+    // },
+    // {
+    //     text: 'INTERFACE',
+    //     items: ['layouts', 'pages'],
+    // },
     {
-        text: 'CORE',
-        items: ['dashboard'],
+        text: '',
+        items: ['home'],
     },
     {
-        text: 'INTERFACE',
-        items: ['layouts', 'pages'],
+        text: '',
+        items: ['job'],
     },
     {
-        text: 'ADDONS',
-        items: ['charts', 'tables'],
+        text: '',
+        items: ['login'],
     },
 ];
 
 export const sideNavItems: SideNavItems = {
+    job: {
+        icon: '',
+        text: 'รับงานเข้าใหม่',
+        link: '/job',
+    },
+    login: {
+        icon: '',
+        text: 'login',
+        link: '/auth/login',
+    },
+    home: {
+        icon: '',
+        text: 'หน้าหลัก',
+        link: '/dashboard',
+    },
     dashboard: {
         icon: 'tachometer-alt',
         text: 'Dashboard',

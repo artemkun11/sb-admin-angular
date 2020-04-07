@@ -1,0 +1,192 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-12" style="background-color: blue;">
+            <section class="container">
+                <p class="text-center" style="color: white;">บริหาร ตรอ.</p>
+            </section>
+
+        </div>
+    </div>
+
+    <div class="row justify-content-center" style="margin-top: -45px;">
+        <div class="col-lg-10">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                <div class="card-header" style="background-color: blue; color: white;">
+                    <h1 class="text-center ">{{stotal}}</h1>
+
+                </div>
+                <div class="card-body">
+                    <form [formGroup] = "frm">
+                        <div class="form-group">
+                            <input class="form-control py-2"  formControlName="inputCarNo" type="text" [(ngModel)]="frm.value.inputCarNo"
+                            placeholder="ทะเบียนรถ" style =" background-color:papayawhip;" />
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control py-2"  formControlName="inputType" style =" background-color:papayawhip;" >
+                                <option value="" disabled selected hidden>เลือกประเภทรถยนต์</option>
+                                <option value="1">test</option>
+                                <option value="2">test</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <input placeholder="วันจดทะเบียน" class="textbox-n form-control py-2" type="text" style =" background-color:papayawhip;"
+                                onfocus="(this.type='date')" formControlName="inputCarDate">
+                        </div>
+
+                        <div class="form-group">
+
+                            <div class="row">
+
+                                <div class="col-md-4">
+                                    <input type="checkbox" id="company" formControlName="company" value="company">
+                                    &nbsp;<label for="company"> นิติบุคคล</label>
+                                </div>
+                                <div class="col-md-1">
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <div class="row">
+
+                                <div class="col-md-3">
+                                    <input type="radio" id="ngv" formControlName="carType" value="ngv/cng">
+                                    &nbsp;<label for="ngv"> ngv/cng</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="radio" id="Hybrid" formControlName="carType" value="Hybrid">
+                                    &nbsp; <label for="Hybrid"> Hybrid</label>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                             <p  class="card-text float-md-left">ภาษีรถประจำปี</p>
+                             <p class="card-text float-md-right"><input type="number" formControlName="txtTaxyear" readonly [(ngModel)]="frm.value.txtTaxyear"
+                                style="text-align: right;border: none; background-color: rgb(247,247,247);" ></p>
+                            </div>
+
+                          </div>
+
+                        <table class="table table-bordered">
+
+                            <tbody>
+                                <tr align="center" style="vertical-align: middle; font-size: small;">
+                                    <td style="vertical-align: middle; width: 5%; background-color:papayawhip;" ><input type="radio" formControlName="fiveyear" formControlName="caryear" value="6000" (change)="cal_taxyear()"></td>
+                                    <td>รถ 5 ปี<br />
+                                        6,000
+                                    </td>
+                                    <td style="vertical-align: middle; width: 5%; background-color:papayawhip;" ><input type="radio" id="sixyear" formControlName="caryear" value="5000" (change)="cal_taxyear()"></td>
+                                    <td>รถ 6 ปี<br />
+                                        5,000
+                                    </td>
+                                    <td style="vertical-align: middle; width: 5%; background-color:papayawhip;" ><input type="radio" id="sevenyear" formControlName="caryear" value="4000" (change)="cal_taxyear()"></td>
+                                    <td>รถ 7 ปี<br />
+                                        4,000
+                                    </td>
+                                </tr>
+                                <tr align="center" style="vertical-align: middle; font-size: small;">
+                                    <td style="vertical-align: middle; width: 5%; background-color:papayawhip;" ><input type="radio" id="eightyear" formControlName="caryear" value="3000" (change)="cal_taxyear()"></td>
+                                    <td>รถ 8 ปี<br />
+                                        3,000
+                                    </td>
+                                    <td style="vertical-align: middle; width: 5%; background-color:papayawhip;" ><input type="radio" id="nineyear" formControlName="caryear" value="2000" (change)="cal_taxyear()"></td>
+                                    <td>รถ 9 ปี<br />
+                                        2,000
+                                    </td>
+                                    <td style="vertical-align: middle; width: 5%; background-color:papayawhip;" ><input type="radio" id="tenyear" formControlName="caryear" value="1000" (change)="cal_taxyear()"></td>
+                                    <td>รถ >=10 ปี<br />
+                                        1,000
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                        <table class="table table-bordered" >
+                            <tr>
+                                <td style ="border-right-style: none; width: 5%; background-color:papayawhip;" ><input type="checkbox" formControlName="chkTaxlate"  (change)="checkTaxlate()"></td>
+                                <td style ="border-right-style: none; border-left-style: none;">ค่าปรับล่าช้า(1%)<input type="number" formControlName="txtMonth" style="text-align: right; background-color:papayawhip;" [(ngModel)]="frm.value.txtMonth" (change)="cal_taxyear()"> เดือน</td>
+                                <td style ="border-left-style: none; width: 30%; text-align: right;"><input type="number" formControlName="txtTaxlate" readonly style="text-align: right;" [(ngModel)]="frm.value.txtTaxlate" ></td>
+                            </tr>
+
+                        </table>
+                        <table class="table table-bordered" >
+                            <tr>
+                                <td style ="border-right-style: none; width: 5%; background-color:papayawhip;" ><input type="checkbox" formControlName="chkStatus"  (change)="checkStatus()"></td>
+                                <td style ="border-right-style: none; border-left-style: none;">ค่าตรวจสภาพรถ</td>
+                                <td style ="border-left-style: none; width: 30%; text-align: right;"><input type="number" formControlName="txtTaxstatus" readonly style="text-align: right;" [(ngModel)]="frm.value.txtTaxstatus" (change)="checkStatus()"></td>
+                            </tr>
+
+                        </table>
+                        <table class="table table-bordered" >
+                            <tr>
+                                <td style ="border-right-style: none; width: 5%; background-color:papayawhip;" ><input type="checkbox"  formControlName="chkPRB" (change)="checkPRB()"></td>
+                                <td style ="border-right-style: none; border-left-style: none;">ค่าเบี้ยประกัน พรบ.</td>
+                                <td style ="border-left-style: none; width: 30%; text-align: right;"><input type="number" formControlName="txtPRB" style="text-align: right; background-color:papayawhip;" [(ngModel)]="frm.value.txtPRB" (change)="cal_taxyear()"></td>
+                            </tr>
+
+                        </table>
+                        <table class="table table-bordered" >
+                            <tr>
+                                <td style ="border-right-style: none; width: 5%; background-color:papayawhip;" ><input type="checkbox"  formControlName="chkHRT" (change)="checkHRT()"></td>
+                                <td style ="border-right-style: none; border-left-style: none;">ค่าเบี้ยประกัน ภาคสมัครใจ</td>
+                                <td style ="border-left-style: none; width: 30%; text-align: right;"><input type="number" formControlName="txtHRT" style="text-align: right; background-color:papayawhip;" [(ngModel)]="frm.value.txtHRT" (change)="cal_taxyear()"></td>
+                            </tr>
+
+                        </table>
+                        <table class="table table-bordered" >
+                            <tr>
+                                <td style ="border-right-style: none; width: 5%; background-color:papayawhip;" ><input type="checkbox"  formControlName="chkCarService" (change)="checkCarService()"></td>
+                                <td style ="border-right-style: none; border-left-style: none;">ค่าบริการเสียภาษี รถ</td>
+                                <td style ="border-left-style: none; width: 30%; text-align: right;"><input type="number" formControlName="txtCarService" readonly style="text-align: right;" [(ngModel)]="frm.value.txtCarService" (change)="cal_taxyear()"></td>
+                            </tr>
+
+                        </table>
+                        <table class="table table-bordered" >
+                            <tr>
+                                <td style ="border-right-style: none; width: 5%; background-color:papayawhip;" ><input type="checkbox" formControlName="chkBike"  (change)="checkBike()"></td>
+                                <td style ="border-right-style: none; border-left-style: none;">ค่าบริการออก พรบ. จยย.</td>
+                                <td style ="border-left-style: none; width: 30%; text-align: right;"><input type="number" formControlName="txtbike" readonly style="text-align: right;" [(ngModel)]="frm.value.txtbike" (change)="cal_taxyear()"></td>
+                            </tr>
+
+                        </table>
+                        <table class="table table-bordered" >
+                            <tr >
+                                <td style ="border-right-style: none; width: 5%; background-color:papayawhip;" ><input type="checkbox" formControlName="chkOther"  (change)="checkOther()"></td>
+                                <td style ="border-right-style: none; border-left-style: none;">อื่นๆ <input type="text" formControlName="txtOtherDesc" size="35%" style =" background-color:papayawhip;" ></td>
+                                <td style ="border-left-style: none; text-align: right;"><input type="number" formControlName="txtOther" style="text-align: right; background-color:papayawhip;" [(ngModel)]="frm.value.txtOther" (change)="cal_taxyear()" ></td>
+                            </tr>
+
+                        </table>
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group" style="text-align: center;">
+                                <input [disabled]="frm.invalid" type="submit" class="btn btn-success" value="ดำเนินการต่อ" (click)="makePdf()" >
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    <div class= "small"></div>
+</div>
